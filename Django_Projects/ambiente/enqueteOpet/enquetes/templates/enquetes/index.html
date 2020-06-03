@@ -1,0 +1,15 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'enquetes/style.css' %}">
+{% if ultimas_questoes%}
+ <ul>
+    {% for questao in ultimas_questoes %}
+    <li>
+        <a href="{% url 'enquetes:detail' questao.id %}">
+            {{questao.questao_texto}}
+        </a>
+    </li>
+    {% endfor %}
+ </ul>
+ {% else %}
+    <p>Sem questoes</p>
+ {% endif %}

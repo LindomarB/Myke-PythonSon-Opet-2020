@@ -1,0 +1,14 @@
+<h1>{{ questao.questao_texto }}</h1>
+
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+<form action="{%url 'enquetes:vote' questao.id%}" method="POST">
+{% csrf_token %}
+{% for escolha in questao.escolha_set.all %}
+   <input type="radio" name="escolha" id="esclho{{forloop.counter}}" value ="{{escolha.id}}">
+   <label for="escolha{{forloop.counter}}">{{escolha.escolha_texto}}</label>
+   <br>
+{% endfor %}
+<input type="submit" value ="Vote">
+</form>

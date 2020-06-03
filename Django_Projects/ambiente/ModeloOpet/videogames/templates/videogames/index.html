@@ -1,0 +1,11 @@
+{% if all_videogames %}
+<ul>
+    {% for videogame in all_videogames %}
+
+    <!--<li><a href="/videogames/{{videogame.id}}/">{{videogame.vg_name}}</a></li>-->
+    <li><a href="{% url 'videogames:detail' videogame.id%}">{{videogame.vg_name}}</a></li>
+    {% endfor %}
+</ul>
+{%else%}
+    <p>Sem video games cadastrados na LakeHorn</p>
+{%endif%}    
